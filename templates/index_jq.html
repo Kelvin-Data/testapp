@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX Form Submission with jQuery</title>
+    
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Include HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+
+    <h2>Submit Your Name</h2>
+    <form hx-post="/submit-form" hx-target="#form-result">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="form-result">
+        <!-- The response from the server will appear here -->
+    </div>
+
+    <script>
+        // jQuery event listener to reset the form after HTMX request
+        $(document).on('htmx:afterRequest', function() {
+            $('form')[0].reset();  // Resets the form fields
+        });
+    </script>
+
+</body>
+</html>
