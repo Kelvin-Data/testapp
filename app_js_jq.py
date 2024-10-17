@@ -12,4 +12,4 @@ def submit_form():
     return f"<p>Hello, {name}! Thank you for submitting the form.</p>"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
